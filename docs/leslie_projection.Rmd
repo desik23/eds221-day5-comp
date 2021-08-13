@@ -43,16 +43,16 @@ Add line-by-line comments wheres prompted in the code below, explaining what eac
 # ------ WHAT HAPPENS HERE? ------ #
 # ------ comment line-by-line ---- #
 
-# The line below...
+# Creates a vector of years from 0 to 8
 time_yr <- seq(from = 0, to = 8, by = 1)
 
-# The line below...
+# creates a matrix with years as rows and number of population parameters as columns
 proj_year <- matrix(ncol = length(fish_year0), nrow = length(time_yr))
 
-# The line below...
+# First row is initial vector
 proj_year[1, ] <- fish_year0
 
-# The for loop below...
+# Computes next years output based on previous year
 for (i in 2:length(time_yr)) {
   proj_year[i,] <- fish_leslie %*% proj_year[i-1,]
 }
@@ -71,3 +71,7 @@ ggplot(data = proj_df, aes(x = time_yr, y = stage_population)) +
 ```
 
 Test different combinations of survival / reproduction and starting population structures to see what happens! 
+
+
+
+
